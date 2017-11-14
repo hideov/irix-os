@@ -1,0 +1,16 @@
+@import 'colour';
+@import 'menu';
+@import 'launcher';
+@import 'window';
+@import 'taskbar';
+
+body {
+    background: $bg-colour;
+    font-family: monospace;
+    overflow: hidden;
+}
+
+.ui-resizable, 
+.draggable {
+    position: absolute;
+}

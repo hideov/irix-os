@@ -1,0 +1,18 @@
+$bg-colour: #005566;
+$content-bg-colour: #87AACA;
+
+// pallette
+$light-teal: #77C4D3;
+$irix-grey: #D9D9D9;
+$greenboy: #13CA4F;
+$mai-parple: #5A73F6;
+
+// shades
+$form-bg-colour: $irix-grey;
+//$form-bg-colour: $greenboy;
+//$form-bg-colour: $mai-pa/rple;
+
+//$form-active-bg-colour: $form-bg-colour + #101010;
+//$form-title-bg-colour: $form-bg-colour - #303030 + #010101;
+$form-active-bg-colour: lighten($form-bg-colour, 10%);
+$form-title-bg-colour: darken($form-bg-colour, 20%);

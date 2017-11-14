@@ -1,0 +1,54 @@
+@import 'colour';
+
+.task-bar {
+    position: absolute;
+    width: 80vw;
+    min-height: 24px;
+    left: calc(10vw);
+    bottom: 0;
+    font-style: italic;
+    display: flex;
+    background: $form-bg-colour;
+    border-top: 2px solid lighten($form-bg-colour, 20%);
+    border-left: 2px solid lighten($form-bg-colour, 20%);
+    border-bottom: 2px solid darken($form-title-bg-colour, 20%);
+    border-right: 2px solid darken($form-title-bg-colour, 20%);
+    user-select: none;
+    cursor: default;
+    outline: 1px solid #000000;
+    margin: 0 1px;
+    line-height: 20px;
+    z-index: 1000000;
+
+    .task-label {
+        position: relative;
+        display: block;
+        padding: 0 6px;
+        width: 100px;
+        height: 20px;
+        line-height: 20px;
+        
+        .task-name {
+            position: absolute;
+            left: 6px;
+            right: 6px;
+            overflow: hidden;
+        }
+        
+        &.hidden {
+            // background: $form-bg-colour; // inherited
+            border-right: 2px solid darken($form-title-bg-colour, 20%);
+            border-bottom: 2px solid darken($form-title-bg-colour, 20%);
+            border-left: 2px solid lighten($form-bg-colour, 20%);
+            border-top: 2px solid lighten($form-bg-colour, 20%);
+        }
+        
+        &.shown {
+            background: $form-title-bg-colour;
+            border-left: 2px solid darken($form-title-bg-colour, 20%);
+            border-top: 2px solid darken($form-title-bg-colour, 20%);
+            border-right: 2px solid lighten($form-bg-colour, 20%);
+            border-bottom: 2px solid lighten($form-bg-colour, 20%);
+        }
+    }
+}

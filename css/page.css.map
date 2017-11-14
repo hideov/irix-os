@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,IAAK;EACD,WAAW,EAAE,SAAS",
+"sources": ["../scss/page.scss"],
+"names": [],
+"file": "page.css"
+}

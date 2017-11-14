@@ -1,0 +1,44 @@
+.task-bar {
+  position: absolute;
+  width: 80vw;
+  min-height: 24px;
+  left: calc(10vw);
+  bottom: 0;
+  font-style: italic;
+  display: flex;
+  background: #D9D9D9;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-bottom: 2px solid #737373;
+  border-right: 2px solid #737373;
+  user-select: none;
+  cursor: default;
+  outline: 1px solid #000000;
+  margin: 0 1px;
+  line-height: 20px;
+  z-index: 1000000; }
+  .task-bar .task-label {
+    position: relative;
+    display: block;
+    padding: 0 6px;
+    width: 100px;
+    height: 20px;
+    line-height: 20px; }
+    .task-bar .task-label .task-name {
+      position: absolute;
+      left: 6px;
+      right: 6px;
+      overflow: hidden; }
+    .task-bar .task-label.hidden {
+      border-right: 2px solid #737373;
+      border-bottom: 2px solid #737373;
+      border-left: 2px solid white;
+      border-top: 2px solid white; }
+    .task-bar .task-label.shown {
+      background: #a6a6a6;
+      border-left: 2px solid #737373;
+      border-top: 2px solid #737373;
+      border-right: 2px solid white;
+      border-bottom: 2px solid white; }
+
+/*# sourceMappingURL=taskbar.css.map */
