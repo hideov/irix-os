@@ -1,3 +1,4 @@
+@import 'colour';
 
 .launcher {
     max-width: 92px;
@@ -13,11 +14,20 @@
     
     img {
         position: relative;
+        cursor: grab;
+        cursor: -moz-grab;
+        cursor: -webkit-grab;
         margin: 2px;
         padding: 1px;
         background: lighten($form-title-bg-colour, 20%);
         border-top: 1px solid darken($form-title-bg-colour, 20%);
         border-left: 1px solid darken($form-title-bg-colour, 20%);
+        
+        &:active {
+            cursor: grabbing;
+            cursor: -moz-grabbing;
+            cursor: -webkit-grabbing;
+        }
     }
     
     hr {

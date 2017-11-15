@@ -46,6 +46,15 @@
         .title {
             flex: 1;
             padding-left: 20px;
+            cursor: grab;
+            cursor: -moz-grab;
+            cursor: -webkit-grab;
+            
+            &:active {
+                cursor: grabbing;
+                cursor: -moz-grabbing;
+                cursor: -webkit-grabbing;
+            }
         }
         
         span {    

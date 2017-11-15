@@ -33,7 +33,14 @@
       text-align: center; }
     .window .title-bar .title {
       flex: 1;
-      padding-left: 20px; }
+      padding-left: 20px;
+      cursor: grab;
+      cursor: -moz-grab;
+      cursor: -webkit-grab; }
+      .window .title-bar .title:active {
+        cursor: grabbing;
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing; }
     .window .title-bar span {
       overflow: hidden; }
       .window .title-bar span:active .rest {

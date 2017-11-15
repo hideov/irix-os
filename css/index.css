@@ -12,7 +12,14 @@
     border-left: 2px solid #d9d9d9;
     border-right: 2px solid #737373;
     border-bottom: 2px solid #737373;
-    padding: 2px 10px; }
+    padding: 2px 10px;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab; }
+    .menu span:first-of-type:active {
+      cursor: grabbing;
+      cursor: -moz-grabbing;
+      cursor: -webkit-grabbing; }
   .menu ul {
     padding-left: 0;
     border-top: 2px solid white;
@@ -51,11 +58,18 @@
   border-bottom: 1px solid #737373; }
   .launcher img {
     position: relative;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
     margin: 2px;
     padding: 1px;
     background: #d9d9d9;
     border-top: 1px solid #737373;
     border-left: 1px solid #737373; }
+    .launcher img:active {
+      cursor: grabbing;
+      cursor: -moz-grabbing;
+      cursor: -webkit-grabbing; }
   .launcher hr {
     border: 0;
     height: 1px;
@@ -115,7 +129,14 @@
       text-align: center; }
     .window .title-bar .title {
       flex: 1;
-      padding-left: 20px; }
+      padding-left: 20px;
+      cursor: grab;
+      cursor: -moz-grab;
+      cursor: -webkit-grab; }
+      .window .title-bar .title:active {
+        cursor: grabbing;
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing; }
     .window .title-bar span {
       overflow: hidden; }
       .window .title-bar span:active .rest {
