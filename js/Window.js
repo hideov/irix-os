@@ -196,7 +196,10 @@ Window.prototype.generateDom = function (cb) {
     var edit_ul = document.createElement("ul");
     var edit_ul_copy = document.createElement("li");
     edit_ul_copy.innerText = "Copy";
-    edit_ul.appendChild(edit_ul_copy);
+    if (navigator.userAgent.toLowerCase().indexOf('firefox') === -1) {
+        // not working on firefox
+        edit_ul.appendChild(edit_ul_copy);
+    }
     var edit_ul_select_all = document.createElement("li");
     edit_ul_select_all.innerText = "Select all";
     edit_ul.appendChild(edit_ul_select_all);
@@ -250,6 +253,14 @@ Window.prototype.generateDom = function (cb) {
         iframe.contentDocument.body.onclick = function (ev) {
             self.focus();
         };
+        
+        iframe.contentDocument.designMode = "on";
+//        iframe.contentWindow.pidwmCopy = function () {
+//            console.log(this.document);
+//            console.log(this.document.designMode);
+//            console.log(this.document.execCommand("Copy"));
+//        };
+        
         // inject css for styling agnostic page
         var cssLink = document.createElement("link") 
         cssLink.href = "../css/page.css"; 
@@ -265,10 +276,28 @@ Window.prototype.generateDom = function (cb) {
     
     
     // some specific menu action
+//    var editFunction = function () {
+//        return $.Deferred().resolve().promise();
+//    };
+//    
+//    edit_ul_copy.onclick = function () {
+//        editFunction().then(function () {
+//            // copy selected code to clipboard
+//            console.log("copy")
+//            iframe.contentDocument.execCommand("copy");
+//        });    
+//    };
+    
+//    function copy() {
+//        iframe.contentDocument.execCommand("copy");
+//    }
+//    edit_ul_copy.addEventListener("click", copy);
+    
     edit_ul_copy.onclick = function () {
-        // copy selected code to clipboard
+//        iframe.contentWindow.pidwmCopy();
         iframe.contentDocument.execCommand("copy");
     };
+    
     edit_ul_select_all.onclick = function () {
         // copy selected code to select all inside iframe
         var select = function (element) {

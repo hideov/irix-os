@@ -20,7 +20,7 @@ var desktopObjects =
                 x: 50,
                 y: 50,
             },
-            caption: "main menuz",
+            caption: "πDwm",
             entries: [
                 {
                     label: "asd",
