@@ -23,16 +23,16 @@ var desktopObjects =
             caption: "πDwm",
             entries: [
                 {
-                    label: "asd",
-                    page: "pages/simpsonwave.html"
+                    label: "home",
+                    page: "pages/home.html"
                 },
                 {
-                    label: "lol",
-                    page: "pages/simpsonwave.html"
+                    label: "crypto\xa0\xa0\xa0\xa0",
+                    page: "pages/crypto.html"
                 },
                 {
-                    label: "simpsonwave",
-                    page: "pages/simpsonwave.html"
+                    label: "design",
+                    page: "pages/design.html"
                 },
             ]
         }

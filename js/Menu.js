@@ -37,9 +37,11 @@ Menu.prototype.generateDom = function (cb) {
         a.className = "a"
         a.innerText = ent.label;
         a.href = ent.page;
+        $(a).data("ent", ent);
         a.onclick = function (ev) {
             ev.preventDefault();
             // open a page
+            var ent = $(ev.target).data("ent");
             new Window({
                 title: ent.label,
                  page: ent.page,
