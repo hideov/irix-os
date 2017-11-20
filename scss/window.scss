@@ -1,4 +1,5 @@
 @import 'colour';
+@import 'crossplatform';
 
 .window {
     position: absolute;
@@ -22,7 +23,18 @@
         border: 1px solid #000000;
         height: 24px;
         cursor: default;
-        user-select: none;
+        @include crossplatform((
+            user-select: none
+        ), webkit moz ms);
+        
+        .clickable {
+            display: block;
+            height: 20px;
+            width: 20px;
+            position: absolute;
+            top: 0; 
+            left: 0;
+        }
         
         .roll-up,
         .minimise,
@@ -41,6 +53,10 @@
         .close {
             width: 20px;
             text-align: center;
+            
+            svg {
+                pointer-events: none;
+            }
         }
         
         .title {
@@ -49,20 +65,23 @@
             cursor: grab;
             cursor: -moz-grab;
             cursor: -webkit-grab;
+            cursor: -ms-grab;
             
             &:active {
                 cursor: grabbing;
                 cursor: -moz-grabbing;
                 cursor: -webkit-grabbing;
+                cursor: -ms-grabbing;
             }
         }
         
-        span {    
+        .btncontainer {
+            position: relative;
             overflow: hidden;
             
             &:active {
                 .rest {
-                    display:none;
+                    display: none;
                 }
             }
         }
@@ -79,7 +98,9 @@
         border-left: 2px solid lighten($form-bg-colour, 20%);
         border-bottom: 2px solid darken($form-bg-colour, 20%);
         border-right: 2px solid darken($form-bg-colour, 20%);
-        user-select: none;
+        @include crossplatform((
+            user-select: none
+        ), webkit moz ms);
         cursor: default;
         outline: 1px solid #000000;
         margin: 0 1px;

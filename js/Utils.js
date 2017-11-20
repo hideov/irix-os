@@ -18,4 +18,20 @@ var enableDOM = function () {
         minHeight: 96,
         minWidth: 192,
     });
+    /*
+    // svgs should transfer up clicks
+    $(".title-bar svg, .title-bar rect").each(function(idx, el) {
+        console.log(el);
+        $(el).on('click', function (ev) {
+            console.log("click")
+        });
+        el.onclick = function (ev) {
+            console.log("click")
+        };
+//        $(el).on('click', function (ev) {
+//            console.log("click")
+//            $(ev.target).parent().click();
+//        });
+    });
+    */
 };

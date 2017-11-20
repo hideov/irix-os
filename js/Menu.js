@@ -42,7 +42,8 @@ Menu.prototype.generateDom = function (cb) {
             // open a page
             new Window({
                 title: ent.label,
-                page: ent.page,
+                 page: ent.page,
+                index: ent.index,
                 status: ""
             });
         };

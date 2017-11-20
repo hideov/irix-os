@@ -3,6 +3,9 @@
   font-family: monospace;
   font-style: italic;
   outline: 1px solid #000000;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   background: #a6a6a6;
   border-top: 1px solid #d9d9d9;
@@ -14,6 +17,7 @@
     cursor: grab;
     cursor: -moz-grab;
     cursor: -webkit-grab;
+    cursor: -ms-grab;
     margin: 2px;
     padding: 1px;
     background: #d9d9d9;
@@ -22,7 +26,8 @@
     .launcher img:active {
       cursor: grabbing;
       cursor: -moz-grabbing;
-      cursor: -webkit-grabbing; }
+      cursor: -webkit-grabbing;
+      cursor: -ms-grabbing; }
   .launcher hr {
     border: 0;
     height: 1px;

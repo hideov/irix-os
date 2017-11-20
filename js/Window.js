@@ -114,8 +114,10 @@ Window.prototype.generateDom = function (cb) {
     var windowbar = document.createElement("div");
     windowbar.className = "title-bar";
     var rollup = document.createElement("span");
-    rollup.className = "roll-up";
+    rollup.className = "roll-up btncontainer";
+    
     rollup.innerHTML = '<svg class="rest" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><rect height="2" width="3" y="11" x="10" stroke-width="0" stroke="#fff" fill="#000"/><rect height="3" width="3" y="8.5" x="8.5" stroke="#000" fill="none"/><rect height="2" width="2" y="10" x="11" stroke-width="0" stroke="#fff" fill="#000"/></svg><svg class="clicked" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><rect height="3" width="3" y="9.5" x="9.5" stroke="#000" fill="none"/></svg>';
+    
     rollup.onclick = function (ev) {
         var wind = $(ev.target).parent().parent();
         var content = wind.find(".content");
@@ -139,22 +141,27 @@ Window.prototype.generateDom = function (cb) {
             wind.resizable( "option", "handles", "all" );
         }
     };
+    
     var title = document.createElement("span");
     title.className = "title drag-handle";
     title.innerText = self.options.title;
     var minimise = document.createElement("span");
-    minimise.className = "minimise";
+    minimise.className = "minimise btncontainer";
     minimise.innerHTML = '<svg class="rest" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><rect height="2" width="14" y="11" x="4" stroke-width="0" stroke="#fff" fill="#000"/><rect  height="3" width="14" y="8.5" x="2.5" stroke="#000" fill="none"/><rect height="2" width="2" y="10" x="16" stroke-width="0" stroke="#fff" fill="#000"/></svg><svg class="clicked" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><rect  height="3" width="14" y="9.5" x="3.5" stroke="#000" fill="none"/></svg>';
+    
     minimise.onclick = function () {
         // minimise
         self.hide();
     };
+    
     var close = document.createElement("span");
-    close.className = "close";
+    close.className = "close btncontainer";
     close.innerHTML = '<svg class="rest" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><rect height="2" width="12" y="15" x="5" stroke-width="0" stroke="#fff" fill="#000"/><!-- bot shadow --><rect height="12" width="12" y="3.5" x="3.5" stroke="#000" fill="none"/><!-- box --><rect height="12" width="2" y="5" x="15" stroke-width="0" stroke="#fff" fill="#000"/><!-- right shadow --></svg><svg class="clicked" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><rect height="12" width="12" y="4.5" x="4.5" stroke="#000" fill="none"/><!-- box --></svg>';
+    
     close.onclick = function (ev) {
         self.close();
     };
+    
     windowbar.appendChild(rollup);
     windowbar.appendChild(title);
     windowbar.appendChild(minimise);
@@ -220,15 +227,38 @@ Window.prototype.generateDom = function (cb) {
     var content = document.createElement("div");
     content.className = "content";
     var iframe = document.createElement("iframe");
-    iframe.src = self.options.page;
+    if (self.options.page) {
+        iframe.src = self.options.page;
+    } else if (self.options.index) {
+        // fetch page from github and reconstruct dom
+        // retrieve pages from github
+        var user = "hideov"
+        var repo = "irix-os"
+        var subdir = "/pages/"
+        $.ajax({
+            url: "https://api.github.com/repos/"+user+"/"+repo+"/contents/"+subdir+"/"+self.options.filename,
+            data: undefined,
+            success: function (data, status, jqXHR) {
+                var html = atob(data.content);
+                iframe.contentDocument.body.innerHTML += html; // nasty, strip non body part and handle head
+            },
+            dataType: "json"
+        });
+    }
     iframe.onload = function () {
         // inject javascript to the iframe that takes care of z-indices
         iframe.contentDocument.body.onclick = function (ev) {
             self.focus();
         };
+        // inject css for styling agnostic page
+        var cssLink = document.createElement("link") 
+        cssLink.href = "../css/page.css"; 
+        cssLink .rel = "stylesheet"; 
+        cssLink .type = "text/css"; 
+        iframe.contentDocument.body.appendChild(cssLink);
     };
     content.appendChild(iframe);
-
+    
     var status = document.createElement("div");
     status.className = "status-bar";
     status.innerText = self.options.status;

@@ -1,11 +1,14 @@
 @import 'colour';
+@import 'crossplatform';
 
 .launcher {
     max-width: 92px;
     font-family: monospace;
     font-style: italic;
     outline: 1px solid #000000;
-    user-select: none;
+    @include crossplatform((
+        user-select: none
+    ), webkit moz ms);
     background: $form-title-bg-colour;
     border-top: 1px solid lighten($form-title-bg-colour, 20%);
     border-left: 1px solid lighten($form-title-bg-colour, 20%);
@@ -17,6 +20,7 @@
         cursor: grab;
         cursor: -moz-grab;
         cursor: -webkit-grab;
+        cursor: -ms-grab;
         margin: 2px;
         padding: 1px;
         background: lighten($form-title-bg-colour, 20%);
@@ -27,6 +31,7 @@
             cursor: grabbing;
             cursor: -moz-grabbing;
             cursor: -webkit-grabbing;
+            cursor: -ms-grabbing;
         }
     }
     

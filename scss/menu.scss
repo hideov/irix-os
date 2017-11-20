@@ -1,10 +1,15 @@
 @import 'colour';
+@import 'crossplatform';
 
 .menu {
     max-width: 150px;
     font-style: italic;
     border: 1px solid #000000;
-    user-select: none;
+    
+    @include crossplatform((
+        user-select: none
+    ), webkit moz ms);
+
     cursor: default;
     z-index: 999999;
     
@@ -19,11 +24,13 @@
         cursor: grab;
         cursor: -moz-grab;
         cursor: -webkit-grab;
+        cursor: -ms-grab;
         
         &:active {
             cursor: grabbing;
             cursor: -moz-grabbing;
             cursor: -webkit-grabbing;
+            cursor: -ms-grabbing;
         }
     }
     

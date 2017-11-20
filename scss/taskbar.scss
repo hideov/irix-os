@@ -1,4 +1,5 @@
 @import 'colour';
+@import 'crossplatform';
 
 .task-bar {
     position: absolute;
@@ -13,7 +14,9 @@
     border-left: 2px solid lighten($form-bg-colour, 20%);
     border-bottom: 2px solid darken($form-title-bg-colour, 20%);
     border-right: 2px solid darken($form-title-bg-colour, 20%);
-    user-select: none;
+    @include crossplatform((
+        user-select: none
+    ), webkit moz ms);
     cursor: default;
     outline: 1px solid #000000;
     margin: 0 1px;

@@ -1,0 +1,3 @@
+maybe could host pages (pure) on github, and use ajax to retrieve menu structure plus page content. then rather than iframes to github (which won't be same origin), can download the dom and recreate it inside each window
+
+formalise github calls in a "get page" "get menu" function
